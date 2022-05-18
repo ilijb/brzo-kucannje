@@ -4,8 +4,12 @@
   "description": "ucenje brzog kucanja",
   "main": "dist/main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "start": "npm run build && node dist/main.js"
   },
   "author": "Ilija Bjelic",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^4.6.4"
+  }
 }
