@@ -1,0 +1,11 @@
+{
+  "name": "ucenje_brzog_kucanja",
+  "version": "1.0.0",
+  "description": "ucenje brzog kucanja",
+  "main": "dist/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ilija Bjelic",
+  "license": "ISC"
+}
