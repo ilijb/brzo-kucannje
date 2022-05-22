@@ -1,7 +1,7 @@
 import * as express from "express";
 import * as cors from "cors";
-import IConfig from "./config/IConfig.interface";
-import DevConfig from "./config/dev.config";
+import IConfig from "./common/IConfig.interface";
+import { DevConfig } from "./config";
 
 const config: IConfig = DevConfig;
 const application: express.Application = express();
@@ -16,12 +16,12 @@ application.use(express.json());
 //     maxAge: 1000* 60* 60* 24
 // }));
 
-application.use(config.static.route, express.static(config.static.path, {
-    index: config.static.index,
-    dotfiles: config.static.dotfiles,
-    cacheControl: config.static.cacheControl,
-    etag: config.static.etag,
-    maxAge: config.static.maxAge
+application.use(config.server.static.route, express.static(config.server.static.path, {
+    index: config.server.static.index,
+    dotfiles: config.server.static.dotfiles,
+    cacheControl: config.server.static.cacheControl,
+    etag: config.server.static.etag,
+    maxAge: config.server.static.maxAge
 }));
 
 
