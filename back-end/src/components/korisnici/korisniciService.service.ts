@@ -41,20 +41,6 @@ class korisniciService extends BaseService<korisniciModel, IAdapterOptions> {
             });
         });
     }
-
-    // public async getById(id: number, options: IAdapterOptions): Promise<korisniciModel> {
-    //     return new Promise<korisniciModel>((resolve, reject) => {
-    //         this.db.execute('SELECT * FROM korisnik WHERE korisnik_id = ?', [id])
-    //         .then(async result => {
-    //             const info: any = result; 
-    //             const korisnik: korisniciModel = await this.adaptToModel(info[0]);
-
-    //             resolve(korisnik);
-    //         }).catch(err => {
-    //             reject(err);
-    //         });
-    //     });
-    // }
 }
 
 export default korisniciService;
