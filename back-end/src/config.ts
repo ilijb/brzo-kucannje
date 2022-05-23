@@ -1,4 +1,5 @@
 import IConfig from "./common/IConfig.interface";
+import korisniciRouter from "./components/korisnici/korisniciRouter.router";
 
 const DevConfig: IConfig = {
     server: {
@@ -29,6 +30,7 @@ const DevConfig: IConfig = {
         supportBigNumbers: true,
     },
     routers: [
+        new korisniciRouter(),
     ]
 };
 

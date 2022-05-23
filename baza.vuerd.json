@@ -19,7 +19,7 @@
     },
     "database": "MariaDB",
     "databaseName": "brzo_kucanje",
-    "canvasType": "@vuerd/builtin-sql-ddl",
+    "canvasType": "ERD",
     "language": "GraphQL",
     "tableCase": "pascalCase",
     "columnCase": "camelCase",
