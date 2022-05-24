@@ -1,11 +1,11 @@
-import korisniciService, { DefaultkorisniciAdapterOptions } from "./korisniciService.service";
+import korisnikService, { DefaultkorisniciAdapterOptions } from "./korisniciService.service";
 import { Request, Response } from "express";
 
 
-class korisniciController {
-    private korisniciServiceInstance: korisniciService;
+class korisnikController {
+    private korisniciServiceInstance: korisnikService;
     
-    constructor(korisniciServiceInstance: korisniciService) {
+    constructor(korisniciServiceInstance: korisnikService) {
         this.korisniciServiceInstance = korisniciServiceInstance;
     }
 
@@ -41,4 +41,4 @@ class korisniciController {
     }
 }
 
-export default korisniciController;
+export default korisnikController;

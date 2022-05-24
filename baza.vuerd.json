@@ -45,7 +45,7 @@
   "table": {
     "tables": [
       {
-        "name": "korisnici",
+        "name": "korisnik",
         "comment": "Nalozi korisnika",
         "columns": [
           {
@@ -168,7 +168,7 @@
           "active": false,
           "left": 21.2,
           "top": 74.8,
-          "zIndex": 6,
+          "zIndex": 8,
           "widthName": 60,
           "widthComment": 93.03173828125
         },
@@ -176,7 +176,7 @@
         "id": "9cfc190b-6986-4b08-a3b8-5908a48d06b7"
       },
       {
-        "name": "sesije",
+        "name": "sesija",
         "comment": "Sve pokrenute vezbe",
         "columns": [
           {
@@ -276,7 +276,7 @@
           "active": false,
           "left": 543.2,
           "top": 84.4,
-          "zIndex": 1,
+          "zIndex": 12,
           "widthName": 60,
           "widthComment": 120
         },
@@ -392,7 +392,7 @@
         "id": "9e728b1a-2213-4bdd-b4b7-c464f51f97ea"
       },
       {
-        "name": "kategorije",
+        "name": "kategorija",
         "comment": "",
         "columns": [
           {
@@ -443,10 +443,10 @@
           }
         ],
         "ui": {
-          "active": false,
+          "active": true,
           "left": 1079.6,
           "top": 394,
-          "zIndex": 4,
+          "zIndex": 18,
           "widthName": 60,
           "widthComment": 60
         },
@@ -454,7 +454,7 @@
         "id": "ad7cd990-3f4c-42d3-ba53-a0a867ccb338"
       },
       {
-        "name": "greske",
+        "name": "greska",
         "comment": "",
         "columns": [
           {
@@ -554,7 +554,7 @@
           "active": false,
           "left": 1092.8,
           "top": 84.4,
-          "zIndex": 2,
+          "zIndex": 15,
           "widthName": 60,
           "widthComment": 60
         },

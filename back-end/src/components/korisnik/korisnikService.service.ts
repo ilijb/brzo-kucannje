@@ -1,6 +1,6 @@
 import BaseService from "../../common/BaseService";
 import IAdapterOptions from "../../common/IAdapterOptions.interface";
-import korisniciModel from "./korisniciModel.model";
+import korisniciModel from "./korisnikModel.model";
 
 
 interface IkorisniciAdapterOptions extends IAdapterOptions {
@@ -11,7 +11,7 @@ const DefaultkorisniciAdapterOptions: IkorisniciAdapterOptions = {
     test: false,
 }
 
-class korisniciService extends BaseService<korisniciModel, IAdapterOptions> {
+class korisnikService extends BaseService<korisniciModel, IAdapterOptions> {
     tableName(): string {
         return "korisnik";
     }
@@ -43,5 +43,5 @@ class korisniciService extends BaseService<korisniciModel, IAdapterOptions> {
     }
 }
 
-export default korisniciService;
+export default korisnikService;
 export { DefaultkorisniciAdapterOptions };

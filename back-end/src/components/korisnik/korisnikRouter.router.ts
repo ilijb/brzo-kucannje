@@ -1,14 +1,14 @@
 import IRouter from "../../common/IRouter.interface";
 import IApplicationResources from "../../common/IApplicationResources.interface";
-import korisniciController from "./korisniciController.controller";
-import korisniciService from "./korisniciService.service";
+import korisnikController from "./korisnikController.controller";
+import korisnikService from "./korisnikService.service";
 import * as express from "express";
 
-class korisniciRouter implements IRouter {
+class korisnikRouter implements IRouter {
     public setupRoutes(application: express.Application, resources: IApplicationResources) {
-        const korisniciServiceInstance: korisniciService = new korisniciService(resources.databaseConnection);
+        const korisniciServiceInstance: korisnikService = new korisnikService(resources.databaseConnection);
 
-        const korisniciControllerInstance = new korisniciController(korisniciServiceInstance);
+        const korisniciControllerInstance = new korisnikController(korisniciServiceInstance);
 
         application.get("/korisnici", korisniciControllerInstance.getAll.bind(korisniciControllerInstance));
         application.get("/korisnici/:id", korisniciControllerInstance.getById.bind(korisniciControllerInstance));
@@ -16,4 +16,4 @@ class korisniciRouter implements IRouter {
     }
 }
 
-export default korisniciRouter;
+export default korisnikRouter;
