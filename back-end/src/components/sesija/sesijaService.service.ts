@@ -1,6 +1,6 @@
 import BaseService from "../../common/BaseService";
 import IAdapterOptions from "../../common/IAdapterOptions.interface";
-import sesijeModel from "./sesijeModel.model";
+import sesijeModel from "./sesijaModel.model";
 
 
 
