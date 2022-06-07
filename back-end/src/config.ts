@@ -1,6 +1,10 @@
 import IConfig from "./common/IConfig.interface";
-import korisniciRouter from "./components/korisnici/korisniciRouter.router";
-
+import greskaRouter from "./components/greska/greskaRouter.router";
+import kategorijaRouter from "./components/kategorija/kategorijaRouter.router";
+import korisniciRouter from "./components/korisnik/korisnikRouter.router";
+import rankRouter from "./components/rank/rankRouter.router";
+import sesijaRouter from "./components/sesija/sesijaRouter.router";
+import tekstRouter from "./components/tekst/tekstRouter.router";
 const DevConfig: IConfig = {
     server: {
         port: 10000,
@@ -31,6 +35,11 @@ const DevConfig: IConfig = {
     },
     routers: [
         new korisniciRouter(),
+        new greskaRouter(),
+        new sesijaRouter(),
+        new rankRouter(),
+        new kategorijaRouter(),
+        new tekstRouter(),
     ]
 };
 

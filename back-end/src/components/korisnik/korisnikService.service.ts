@@ -3,11 +3,11 @@ import IAdapterOptions from "../../common/IAdapterOptions.interface";
 import korisniciModel from "./korisnikModel.model";
 
 
-interface IkorisniciAdapterOptions extends IAdapterOptions {
+interface IkorisnikAdapterOptions extends IAdapterOptions {
     test: boolean;
 }
 
-const DefaultkorisniciAdapterOptions: IkorisniciAdapterOptions = {
+const DefaultkorisnikAdapterOptions: IkorisnikAdapterOptions = {
     test: false,
 }
 
@@ -16,7 +16,7 @@ class korisnikService extends BaseService<korisniciModel, IAdapterOptions> {
         return "korisnik";
     }
 
-    protected async adaptToModel(data: any, options: IAdapterOptions = DefaultkorisniciAdapterOptions): Promise<korisniciModel> {
+    protected async adaptToModel(data: any, options: IAdapterOptions = DefaultkorisnikAdapterOptions): Promise<korisniciModel> {
         const  korisnik: korisniciModel = new korisniciModel();
         korisnik.korisnik_id = +data?.korisnik_id;
         korisnik.korisnicko_ime = data?.korisnicko_ime;
@@ -44,4 +44,4 @@ class korisnikService extends BaseService<korisniciModel, IAdapterOptions> {
 }
 
 export default korisnikService;
-export { DefaultkorisniciAdapterOptions };
+export { DefaultkorisnikAdapterOptions };

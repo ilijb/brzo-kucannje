@@ -1,18 +1,18 @@
-import korisnikService, { DefaultkorisniciAdapterOptions } from "./korisniciService.service";
+import korisnikService, { DefaultkorisnikAdapterOptions } from "./korisniKService.service";
 import { Request, Response } from "express";
 
 
 class korisnikController {
-    private korisniciServiceInstance: korisnikService;
+    private korisnikServiceInstance: korisnikService;
     
-    constructor(korisniciServiceInstance: korisnikService) {
-        this.korisniciServiceInstance = korisniciServiceInstance;
+    constructor(korisnikServiceInstance: korisnikService) {
+        this.korisnikServiceInstance = korisnikServiceInstance;
     }
 
     async getAll(req: Request, res: Response) {
 
-        this.korisniciServiceInstance.getAll(DefaultkorisniciAdapterOptions).then(korisnici => {
-            res.send(korisnici);
+        this.korisnikServiceInstance.getAll(DefaultkorisnikAdapterOptions).then(korisnik => {
+            res.send(korisnik);
         }).catch(err => {
             res.status(500).send(err?.message);
         });
@@ -22,7 +22,7 @@ class korisnikController {
     async getById(req: Request, res: Response) {
         const id: number = +req.params.id;
         console.log(id);
-        this.korisniciServiceInstance.getById(id, DefaultkorisniciAdapterOptions).then(korisnik => {
+        this.korisnikServiceInstance.getById(id, DefaultkorisnikAdapterOptions).then(korisnik => {
             res.send(korisnik);
         }
         ).catch(err => {
@@ -33,7 +33,7 @@ class korisnikController {
 
     async add(req: Request, res: Response) {
         const data: any = req.body;
-        this.korisniciServiceInstance.add(data).then(korisnik => {
+        this.korisnikServiceInstance.add(data).then(korisnik => {
             res.send(korisnik);
         }).catch(err => {
             res.send(err);

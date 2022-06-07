@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DevConfig = void 0;
-const korisniciRouter_router_1 = require("./components/korisnici/korisniciRouter.router");
+const korisnikRouter_router_1 = require("./components/korisnik/korisnikRouter.router");
 const DevConfig = {
     server: {
         port: 10000,
@@ -31,7 +31,7 @@ const DevConfig = {
         supportBigNumbers: true,
     },
     routers: [
-        new korisniciRouter_router_1.default(),
+        new korisnikRouter_router_1.default(),
     ]
 };
 exports.DevConfig = DevConfig;

@@ -6,13 +6,13 @@ import * as express from "express";
 
 class korisnikRouter implements IRouter {
     public setupRoutes(application: express.Application, resources: IApplicationResources) {
-        const korisniciServiceInstance: korisnikService = new korisnikService(resources.databaseConnection);
+        const korisnikServiceInstance: korisnikService = new korisnikService(resources.databaseConnection);
 
-        const korisniciControllerInstance = new korisnikController(korisniciServiceInstance);
+        const korisnikControllerInstance = new korisnikController(korisnikServiceInstance);
 
-        application.get("/korisnici", korisniciControllerInstance.getAll.bind(korisniciControllerInstance));
-        application.get("/korisnici/:id", korisniciControllerInstance.getById.bind(korisniciControllerInstance));
-        application.post("/korisnici", korisniciControllerInstance.add.bind(korisniciControllerInstance));
+        application.get("/korisnik", korisnikControllerInstance.getAll.bind(korisnikControllerInstance));
+        application.get("/korisnik/:id", korisnikControllerInstance.getById.bind(korisnikControllerInstance));
+        application.post("/korisnik", korisnikControllerInstance.add.bind(korisnikControllerInstance));
     }
 }
 

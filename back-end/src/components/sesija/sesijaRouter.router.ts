@@ -1,13 +1,18 @@
-// import IRouter from "../../common/IRouter.interface";
-// import * as express from 'express';
-// import IApplicationResources from "../../common/IApplicationResources.interface";
+import IRouter from "../../common/IRouter.interface";
+import * as express from 'express';
+import IApplicationResources from "../../common/IApplicationResources.interface";
+import sesijaController from "./sesijaController.controller";
+import sesijaService from "./sesijaService.service";
 
-// class sesijeRouter implements IRouter {
-//     public setupRoutes(application: express.Application, resources: IApplicationResources) {
-//         application.get("/sesije", sesijeController.getAll);
-//         application.get("/sesije/:id", sesijeController.getById);
-//         application.post("/sesije", resources.sesijeController.create);
-//         application.put("/sesije/:id", resources.sesijeController.update);
-//         application.delete("/sesije/:id", resources.sesijeController.delete);
-//     }
-// }
+class sesijaRouter implements IRouter {
+    public setupRoutes(application: express.Application, resources: IApplicationResources) {
+        const sesijaServiceInstance: sesijaService = new sesijaService(resources.databaseConnection);
+
+        const sesijaControllerInstance = new sesijaController(sesijaServiceInstance);
+        
+        application.get("/sesija", sesijaControllerInstance.getAll.bind(sesijaControllerInstance));
+        application.get("/sesija/:id", sesijaControllerInstance.getById.bind(sesijaControllerInstance));
+        application.post("/sesija", sesijaControllerInstance.add.bind(sesijaControllerInstance));
+    }
+}
+export default sesijaRouter;

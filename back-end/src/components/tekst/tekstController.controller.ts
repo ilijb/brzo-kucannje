@@ -1,18 +1,18 @@
-import sesijaService from "./sesijaService.service";
+import tekstService from "./tekstService.service";
 import { Request, Response } from "express";
 
 
-class sesijaController {
-    private sesijaServiceInstance: sesijaService;
+class tekstController {
+    private tekstServiceInstance: tekstService;
     
-    constructor(sesijaServiceInstance: sesijaService) {
-        this.sesijaServiceInstance = sesijaServiceInstance;
+    constructor(tekstServiceInstance: tekstService) {
+        this.tekstServiceInstance = tekstServiceInstance;
     }
 
     async getAll(req: Request, res: Response) {
 
-        this.sesijaServiceInstance.getAll(null).then(sesija => {
-            res.send(sesija);
+        this.tekstServiceInstance.getAll(null).then(tekst => {
+            res.send(tekst);
         }).catch(err => {
             res.status(500).send(err?.message);
         });
@@ -22,8 +22,8 @@ class sesijaController {
     async getById(req: Request, res: Response) {
         const id: number = +req.params.id;
         console.log(id);
-        this.sesijaServiceInstance.getById(id, null).then(sesija => {
-            res.send(sesija);
+        this.tekstServiceInstance.getById(id, null).then(tekst => {
+            res.send(tekst);
         }
         ).catch(err => {
             res.send(err);
@@ -33,12 +33,12 @@ class sesijaController {
 
     async add(req: Request, res: Response) {
         const data: any = req.body;
-        this.sesijaServiceInstance.add(data).then(sesija => {
-            res.send(sesija);
+        this.tekstServiceInstance.add(data).then(tekst => {
+            res.send(tekst);
         }).catch(err => {
             res.send(err);
         }); 
     }
 }
 
-export default sesijaController;
+export default tekstController;

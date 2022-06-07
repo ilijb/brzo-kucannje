@@ -1,37 +1,38 @@
 import BaseService from "../../common/BaseService";
 import IAdapterOptions from "../../common/IAdapterOptions.interface";
-import sesijeModel from "./sesijaModel.model";
+import sesijaModel from "./sesijaModel.model";
 
 
 
-interface IsesijeAdapterOptions extends IAdapterOptions {
+interface IsesijaAdapterOptions extends IAdapterOptions {
 
 }
 
-const DefaultsesijaAdapterOptions: IsesijeAdapterOptions = {
+const DefaultsesijaAdapterOptions: IsesijaAdapterOptions = {
 
 };
 
-class sesijeService extends BaseService<sesijeModel, IsesijeAdapterOptions> {
+class sesijaService extends BaseService<sesijaModel, IsesijaAdapterOptions> {
     tableName(): string {
-        return "sesije";
+        return "sesija";
     }
 
-    protected async adaptToModel(data: any, options: IsesijeAdapterOptions): Promise<sesijeModel> {
-        const model = new sesijeModel();
+    protected async adaptToModel(data: any, options: IsesijaAdapterOptions): Promise<sesijaModel> {
+        const model = new sesijaModel();
         model.sesija_id = data.sesija_id;
         model.korisnik_id = data.korisnik_id;
         model.tekst_id = data.tekst_id;
         model.brzina = data.brzina;
         return model;
     }
-    public async add(data: any): Promise<sesijeModel> {
-        return new Promise<sesijeModel>((resolve, reject) => {
-            this.db.execute('INSERT INTO sesije (korisnik_id, tekst_id, brzina) VALUES (?, ?, ?)', [data.korisnik_id, data.tekst_id, data.brzina])
+    public async add(data: any): Promise<sesijaModel> {
+        console.log(data)
+        return new Promise<sesijaModel>((resolve, reject) => {
+            this.db.execute('INSERT INTO sesija (korisnik_id,tekst_id, brzina) VALUES (?, ?, ?)', [data.korisnik_id, data.tekst_id, data.brzina])
             .then(async result => {
                 const info: any = result; 
                 const novaSesija_id = +(info[0]?.insertId);
-                const novaSesija: sesijeModel = await this.getById(novaSesija_id, {});
+                const novaSesija: sesijaModel = await this.getById(novaSesija_id, {});
 
                 resolve(novaSesija);
             }).catch(err => {
@@ -41,5 +42,5 @@ class sesijeService extends BaseService<sesijeModel, IsesijeAdapterOptions> {
     }
 }
 
-export default sesijeService;
-export { IsesijeAdapterOptions };
+export default sesijaService;
+export { IsesijaAdapterOptions };
