@@ -2,7 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
+function Application() {
   return (
     <div className="App">
       <header className="App-header">
@@ -10,6 +10,8 @@ function App() {
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
+        <label htmlFor='username'>Username</label>
+        <input type='text' id='username' />
         <a
           className="App-link"
           href="https://reactjs.org"
@@ -23,4 +25,4 @@ function App() {
   );
 }
 
-export default App;
+export default Application;
