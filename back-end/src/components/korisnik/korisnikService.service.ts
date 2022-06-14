@@ -41,6 +41,20 @@ class korisnikService extends BaseService<korisniciModel, IAdapterOptions> {
             });
         });
     }
+
+    public async getByEmail(email: string): Promise<korisniciModel> {
+        return new Promise<korisniciModel>((resolve, reject) => {
+            this.db.execute('SELECT * FROM korisnik WHERE email = ?', [email])
+            .then(async result => {
+                const info: any = result; 
+                const korisnik: korisniciModel = await this.adaptToModel(info[0], {});
+
+                resolve(korisnik);
+            }).catch(err => {
+                reject(err);
+            });
+        });
+    }
 }
 
 export default korisnikService;
