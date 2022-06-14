@@ -1,27 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './Application.sass'; 
+import {Button, Container} from 'react-bootstrap';
+import Login from '../User/Login/Login';
+import { BrowserRouter, Routes, Route} from 'react-router-dom';
+import Menu from './Menu/Menu';
+import KucanjeApp from '../KucanjeApp/KucanjeApp';
 
 function Application() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <label htmlFor='username'>Username</label>
-        <input type='text' id='username' />
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container className='mt-4'>
+      <Menu/>
+      <BrowserRouter >
+        <Routes >
+          <Route path='/' element = {<div>Asd</div>} />
+          <Route path='/login' element={<Login/>}/>
+          <Route path='/app' element={<KucanjeApp/>}/>
+        </Routes>
+      </BrowserRouter>
+
+    </Container>
   );
 }
 
