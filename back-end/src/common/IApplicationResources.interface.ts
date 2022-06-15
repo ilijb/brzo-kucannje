@@ -11,10 +11,10 @@ export interface IServices {
     greska: greskaService
     rank: rankService
     korisnik: korisnikService
-    db: mysql2.Connection;
 }
 
 export default interface IApplicationResources {
-    databaseConnection: mysql2.Connection;
+    databaseConnection: mysql2.Connection
+    services: IServices
 }
 

@@ -26,6 +26,13 @@ async function main() {
             timezone: config.database.timezone,
             supportBigNumbers: config.database.supportBigNumbers,
         }),
+        services: {
+            kategorija: null,
+            sesija: null,
+            greska: null,
+            rank: null,
+            korisnik: null,
+        }
     };
 
     const application: express.Application = express();

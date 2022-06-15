@@ -3,14 +3,16 @@ import * as bcrypt from "bcrypt";
 import * as jwt from "jsonwebtoken";
 import { IUserLoginDto } from "./dto/KorisnikLoginVal";
 import { DevConfig } from "../../config";
-
+import { Request, Response } from "express";
+import AuthMiddleware from "./AuthMiddleware";
 
 export default class AuthController extends BaseController {
     public async userLogin(req: Request, res: Response) {
-        const data = req.body as unknown as IUserLoginDto;
-
-        this.services.korisnik.getByEmail(data?.email)
+        const data = req.body as IUserLoginDto;
+        console.log(data);
+        this.services.korisnik.getByEmail(data.email)
         .then(result => {
+            console.log(result)
             if (result === null) {
                 throw {
                     status: 404,

@@ -179,3 +179,9 @@
 2022-06-07T20:52:37.646Z	::1	POST	/kategorija	200	39 bytes	20.550 ms
 2022-06-07T20:52:41.985Z	::1	POST	/kategorija	200	39 bytes	4.745 ms
 2022-06-07T20:52:45.137Z	::1	GET	/kategorija	200	121 bytes	2.028 ms
+2022-06-15T10:02:04.179Z	::1	GET	//api/auth/user/login	404	9 bytes	2.573 ms
+2022-06-15T10:02:07.040Z	::1	POST	//api/auth/user/login	404	9 bytes	0.945 ms
+2022-06-15T10:02:19.378Z	::1	POST	/tekst	200	68 bytes	31.148 ms
+2022-06-15T10:02:47.889Z	::1	POST	/api/auth/user/login	-	- bytes	- ms
+2022-06-15T10:04:15.526Z	::1	POST	/api/auth/user/login	-	- bytes	- ms
+2022-06-15T10:12:40.718Z	::1	POST	/api/auth/user/login	-	- bytes	- ms

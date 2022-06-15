@@ -48,9 +48,10 @@ class korisnikService extends BaseService<korisniciModel, IAdapterOptions> {
             .then(async result => {
                 const info: any = result; 
                 const korisnik: korisniciModel = await this.adaptToModel(info[0], {});
-
+                // console.log(info)
                 resolve(korisnik);
             }).catch(err => {
+                console.log(email)
                 reject(err);
             });
         });

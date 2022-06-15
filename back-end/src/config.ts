@@ -1,5 +1,6 @@
 import { readFileSync } from "fs";
 import IConfig from "./common/IConfig.interface";
+import AuthRouter from "./components/auth/AuthRouter.router";
 import greskaRouter from "./components/greska/greskaRouter.router";
 import kategorijaRouter from "./components/kategorija/kategorijaRouter.router";
 import korisniciRouter from "./components/korisnik/korisnikRouter.router";
@@ -42,6 +43,7 @@ const DevConfig: IConfig = {
         new rankRouter(),
         new kategorijaRouter(),
         new tekstRouter(),
+        new AuthRouter(),
     ],
     auth: {
         user: {
