@@ -21,7 +21,6 @@ class korisnikController {
 
     async getById(req: Request, res: Response) {
         const id: number = +req.params.id;
-        console.log(id);
         this.korisnikServiceInstance.getById(id, DefaultkorisnikAdapterOptions).then(korisnik => {
             res.send(korisnik);
         }
@@ -33,6 +32,7 @@ class korisnikController {
 
     async add(req: Request, res: Response) {
         const data: any = req.body;
+        data.rank_id = 0;
         this.korisnikServiceInstance.add(data).then(korisnik => {
             res.send(korisnik);
         }).catch(err => {

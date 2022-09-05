@@ -11,8 +11,7 @@ export default class AuthController extends BaseController {
         const data = req.body as IUserLoginDto;
         this.services.korisnik.getByEmail(data.email)
         .then(result => {
-            console.log(result)
-            if (result === null) {
+            if (!result.korisnik_id) {
                 throw {
                     status: 404,
                     message: "User account not found!"
@@ -25,7 +24,7 @@ export default class AuthController extends BaseController {
             if (!bcrypt.compareSync(data.password, user.pw_hash)) {
                 throw {
                     status: 404,
-                    message: "User account not found!"
+                    message: "Username or password is not correct"
                 };
             }
 
@@ -37,13 +36,13 @@ export default class AuthController extends BaseController {
                 id: user.korisnik_id,
                 identity: user.korisnicko_ime
             };
-
+            console.log(DevConfig.auth.user.tokens.auth.keys.private)
             const authToken = jwt.sign(tokenData, DevConfig.auth.user.tokens.auth.keys.private, {
                 algorithm: DevConfig.auth.user.algorithm,
                 issuer: DevConfig.auth.user.issuer,
                 expiresIn: DevConfig.auth.user.tokens.auth.duration,
             });
-
+            
             const refreshToken = jwt.sign(tokenData, DevConfig.auth.user.tokens.refresh.keys.private, {
                 algorithm: DevConfig.auth.user.algorithm,
                 issuer: DevConfig.auth.user.issuer,
@@ -57,6 +56,7 @@ export default class AuthController extends BaseController {
             });
         })
         .catch(error => {
+            console.log(error)
             setTimeout(() => {
                 res.status(error?.status ?? 500).send(error?.message);
             }, 1500);

@@ -1,6 +1,7 @@
 import BaseService from "../../common/BaseService";
 import IAdapterOptions from "../../common/IAdapterOptions.interface";
 import korisniciModel from "./korisnikModel.model";
+import * as bcrypt from "bcrypt";
 
 
 interface IkorisnikAdapterOptions extends IAdapterOptions {
@@ -29,7 +30,8 @@ class korisnikService extends BaseService<korisniciModel, IAdapterOptions> {
     }
     public async add(data: any): Promise<korisniciModel> {
         return new Promise<korisniciModel>((resolve, reject) => {
-            this.db.execute('INSERT INTO korisnik (korisnicko_ime, pw_hash, email, rank_id) VALUES (?, ?, ?, ?)', [data.korisnicko_ime, data.pw_hash, data.email, data.rank_id])
+            const passwordHash = bcrypt.hashSync(data.password, 10);
+            this.db.execute('INSERT INTO korisnik (name, surname, pw_hash, email) VALUES (?, ?, ?, ?)', [data.forename, data.surname, passwordHash, data.email])
             .then(async result => {
                 const info: any = result; 
                 const noviKorisnik_id = +(info[0]?.insertId);
@@ -47,11 +49,9 @@ class korisnikService extends BaseService<korisniciModel, IAdapterOptions> {
             this.db.execute('SELECT * FROM korisnik WHERE email = ?', [email])
             .then(async result => {
                 const info: any = result; 
-                const korisnik: korisniciModel = await this.adaptToModel(info[0], {});
-                // console.log(info)
+                const korisnik: korisniciModel = await this.adaptToModel(info[0][0], {});
                 resolve(korisnik);
             }).catch(err => {
-                console.log(email)
                 reject(err);
             });
         });

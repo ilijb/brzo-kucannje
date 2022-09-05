@@ -10,9 +10,9 @@ class korisnikRouter implements IRouter {
 
         const korisnikControllerInstance = new korisnikController(korisnikServiceInstance);
 
-        application.get("/korisnik", korisnikControllerInstance.getAll.bind(korisnikControllerInstance));
-        application.get("/korisnik/:id", korisnikControllerInstance.getById.bind(korisnikControllerInstance));
-        application.post("/korisnik", korisnikControllerInstance.add.bind(korisnikControllerInstance));
+        application.get("/api/korisnik", korisnikControllerInstance.getAll.bind(korisnikControllerInstance));
+        application.get("/api/korisnik/:id", korisnikControllerInstance.getById.bind(korisnikControllerInstance));
+        application.post("/api/korisnik", korisnikControllerInstance.add.bind(korisnikControllerInstance));
     }
 }
 
