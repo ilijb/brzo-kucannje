@@ -9,7 +9,6 @@ import AuthMiddleware from "./AuthMiddleware";
 export default class AuthController extends BaseController {
     public async userLogin(req: Request, res: Response) {
         const data = req.body as IUserLoginDto;
-        console.log(data);
         this.services.korisnik.getByEmail(data.email)
         .then(result => {
             console.log(result)

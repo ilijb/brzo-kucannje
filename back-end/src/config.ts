@@ -29,8 +29,8 @@ const DevConfig: IConfig = {
     database: {
         host: "localhost",
         port: 3306,
-        user: "praktikum",
-        password: "praktikum_pass",
+        user: "root",
+        password: "root",
         database: "brzo_kucanje",
         charset: "utf8",
         timezone: "+01:00",

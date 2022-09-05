@@ -6,6 +6,8 @@ import * as morgan from "morgan";
 import * as fs from "fs";
 import * as mysql2 from "mysql2/promise";
 import IApplicationResources from "./common/IApplicationResources.interface";
+import kategorijaService from "./components/kategorija/kategorijaService.service";
+import korisnikService from "./components/korisnik/korisniKService.service";
 
 
 async function main() {
@@ -34,6 +36,10 @@ async function main() {
             korisnik: null,
         }
     };
+
+    applicationResources.services.kategorija = new kategorijaService(applicationResources.databaseConnection);
+    applicationResources.services.korisnik = new korisnikService(applicationResources.databaseConnection);
+    
 
     const application: express.Application = express();
     application.use(morgan(config.logging.format, {
