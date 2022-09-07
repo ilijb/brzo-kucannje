@@ -6,6 +6,7 @@ import Login from './User/Login/Login';
 import UserRegisterPage from './User/Registration/UserRegisterPage';
 import Kategorija from './Kategorija/Kategorija';
 import Tekstovi from './Tekstovi/Tekstovi';
+import KucanjeApp from './KucanjeApp/KucanjeApp';
 
 function Application() {
   return (
@@ -14,6 +15,7 @@ function Application() {
       <Routes>
         <Route path='/register' element={<UserRegisterPage />} />
         <Route path='/login' element={<Login />} />
+        <Route path='/tekst/:id'  element={<KucanjeApp />} />
         <Route path='/category/:id'  element={<Tekstovi />} />
         <Route path='/app'  element={<Kategorija />} />
         <Route path='/' element = {<div>Dobro dosli</div>} />
