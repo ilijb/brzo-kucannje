@@ -10,9 +10,10 @@ class tekstRouter implements IRouter {
 
         const tekstControllerInstance = new tekstController(tekstServiceInstance);
 
-        application.get("/tekst", tekstControllerInstance.getAll.bind(tekstControllerInstance));
-        application.get("/tekst/:id", tekstControllerInstance.getById.bind(tekstControllerInstance));
-        application.post("/tekst", tekstControllerInstance.add.bind(tekstControllerInstance));
+        application.get("/api/tekst", tekstControllerInstance.getAll.bind(tekstControllerInstance));
+        application.get("/api/tekst/kategorija/:id", tekstControllerInstance.getByCategoryId.bind(tekstControllerInstance));
+        application.get("/api/tekst/:id", tekstControllerInstance.getById.bind(tekstControllerInstance));
+        application.post("/api/tekst", tekstControllerInstance.add.bind(tekstControllerInstance));
     }
 }
 

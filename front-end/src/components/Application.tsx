@@ -16,7 +16,8 @@ function Application() {
         <Route path='/login' element={<Login />} />
         <Route path='/category/:id'  element={<Tekstovi />} />
         <Route path='/app'  element={<Kategorija />} />
-        <Route path='/' element = {<div>Asd</div>} />
+        <Route path='/' element = {<div>Dobro dosli</div>} />
+        <Route path='*' element = {<h1>Stranica nije pronadjena</h1>} />
       </Routes>
     </>
   );

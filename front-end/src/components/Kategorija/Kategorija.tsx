@@ -25,9 +25,9 @@ export default function Kategorija() {
                 <div className="row">
                 {categories.map(category => {
                     return (
-                    <div key={category.kategorija_id} className="col-md-5 btn-primary text-center display-3 p-3 text-white mb-2 mx-2" onClick={() => redirectToTexts(category.kategorija_id)}>
+                    <button key={category.kategorija_id} className="col-md-5 btn-primary text-center display-3 p-3 text-white mb-2 mx-2" onClick={() => redirectToTexts(category.kategorija_id)}>
                         {category.kategorija}
-                    </div>
+                    </button>
                     )
                 })}
                 </div>

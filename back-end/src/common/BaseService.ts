@@ -105,4 +105,34 @@ export default abstract class BaseService<ReturnModel extends IModel, AdaterOpti
             }
         );
     }
+
+    public getAllByCategoryId(id:number, options: AdaterOptions): Promise<ReturnModel[]> {
+        const tableName = this.tableName();
+
+        return new Promise<ReturnModel[]>(
+            (resolve, reject) => {
+                const sql: string = `SELECT * FROM \`${ tableName }\` WHERE kategorija_id=${id};`;
+
+                this.db.execute(sql)
+                    .then( async ( [ rows ] ) => {
+                        if (rows === undefined) {
+                            return resolve([]);
+                        }
+
+                        const items: ReturnModel[] = [];
+
+                        for (const row of rows as mysql2.RowDataPacket[]) {
+                            items.push(
+                                await this.adaptToModel(row, options)
+                            );
+                        }
+
+                        resolve(items);
+                    })
+                    .catch(error => {
+                        reject(error);
+                    });
+            }
+        );
+    }
 }

@@ -39,6 +39,18 @@ class tekstController {
             res.send(err);
         }); 
     }
+
+    
+    async getByCategoryId(req: Request, res: Response) {
+        const id: number = +req.params.id;
+        this.tekstServiceInstance.getAllByCategoryId(id, null).then(tekst => {
+            res.send(tekst);
+        }
+        ).catch(err => {
+            res.send(err);
+        }
+        );
+    }
 }
 
 export default tekstController;
