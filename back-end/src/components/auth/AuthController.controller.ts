@@ -36,7 +36,6 @@ export default class AuthController extends BaseController {
                 id: user.korisnik_id,
                 identity: user.korisnicko_ime
             };
-            console.log(DevConfig.auth.user.tokens.auth.keys.private)
             const authToken = jwt.sign(tokenData, DevConfig.auth.user.tokens.auth.keys.private, {
                 algorithm: DevConfig.auth.user.algorithm,
                 issuer: DevConfig.auth.user.issuer,

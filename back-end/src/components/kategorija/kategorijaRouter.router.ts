@@ -10,9 +10,9 @@ class kategorijaRouter implements IRouter {
 
         const kategorijaControllerInstance = new kategorijaController(kategorijaServiceInstance);
 
-        application.get("/kategorija", kategorijaControllerInstance.getAll.bind(kategorijaControllerInstance));
-        application.get("/kategorija/:id", kategorijaControllerInstance.getById.bind(kategorijaControllerInstance));
-        application.post("/kategorija", kategorijaControllerInstance.add.bind(kategorijaControllerInstance));
+        application.get("/api/kategorija", kategorijaControllerInstance.getAll.bind(kategorijaControllerInstance));
+        application.get("/api/kategorija/:id", kategorijaControllerInstance.getById.bind(kategorijaControllerInstance));
+        application.post("/api/kategorija", kategorijaControllerInstance.add.bind(kategorijaControllerInstance));
     }
 }
 

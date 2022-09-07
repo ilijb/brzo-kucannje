@@ -1,12 +1,15 @@
 import { useState } from "react";
-import axios from 'axios';
 import AppStore from "../../../stores/AppStore";
 import { api } from "../../../api/api";
+import { useNavigate } from "react-router-dom";
 
 
 function Login() {
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
+
+    const navigate = useNavigate();
+
     const doLogin = () => {
         api("post", "/api/auth/user/login", "user", { email, password })
         .then(res => {
@@ -22,9 +25,10 @@ function Login() {
             AppStore.dispatch( { type: "auth.update", key: "identity", value: email } );
             AppStore.dispatch( { type: "auth.update", key: "id", value: +(data?.id) } );
             AppStore.dispatch( { type: "auth.update", key: "role", value: "user" } );
+            navigate("/");
 
         }).catch(error => {
-            alert("Login failed");
+            alert("Username or password is not correct");
         });
     }
 
