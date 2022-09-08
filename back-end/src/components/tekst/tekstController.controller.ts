@@ -21,9 +21,9 @@ class tekstController {
 
     async getById(req: Request, res: Response) {
         const id: number = +req.params.id;
-        console.log(id);
         this.tekstServiceInstance.getById(id, null).then(tekst => {
-            res.send(tekst);
+            const rows = tekst.tekst.split("||");
+            res.send(rows);
         }
         ).catch(err => {
             res.send(err);
