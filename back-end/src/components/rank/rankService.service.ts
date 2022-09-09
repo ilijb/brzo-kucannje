@@ -15,6 +15,7 @@ class rankService extends BaseService<rankModel, IAdapterOptions> {
         const model = new rankModel();
         model.rank_id = data.rank_id;
         model.rank = data.rank;
+        model.broj_sekundi = data.broj_sekundi;
         return model;
     }
     // public async add(data: any): Promise<rankModel> {
