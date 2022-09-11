@@ -1,8 +1,12 @@
 import {useState, useEffect} from 'react';
 
-export const Timer = () => {
+type Props = {
+  vremeIsteklo: () => void
+}
+
+export const Timer = (props: Props) => {
     // initialize timeLeft with the seconds prop
-    const [timeLeft, setTimeLeft] = useState(60);
+    const [timeLeft, setTimeLeft] = useState(30);
   
     useEffect(() => {
       // exit early when we reach 0
@@ -11,6 +15,10 @@ export const Timer = () => {
       // save intervalId to clear the interval when the
       // component re-renders
       const intervalId = setInterval(() => {
+        if (timeLeft - 1 === 0) {
+            props.vremeIsteklo();
+        }
+
         setTimeLeft(timeLeft - 1);
       }, 1000);
   
