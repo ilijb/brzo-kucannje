@@ -12,7 +12,6 @@ export default function MenuVisitor() {
                     <div className="navbar-nav">
                         <NavLink className="nav-item nav-link" to='/login'>Login</NavLink>
                         <NavLink className="nav-item nav-link" to='/register'>Registracija</NavLink>
-                        <NavLink className="nav-item nav-link" to='/app'>Brzo Kucanje!</NavLink>
                     </div>
                 </div>
             </nav>

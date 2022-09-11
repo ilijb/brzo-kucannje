@@ -1,6 +1,15 @@
 import { NavLink } from "react-router-dom"
+import AppStore from "../../../stores/AppStore";
 
 export default function MenuUser() {
+
+    const logout = () => {
+        AppStore.dispatch( { type: "auth.update", key: "authToken", value: null } );
+        AppStore.dispatch( { type: "auth.update", key: "refreshToken", value: null } );
+        AppStore.dispatch( { type: "auth.update", key: "identity", value: null } );
+        AppStore.dispatch( { type: "auth.update", key: "id", value: null } );
+        AppStore.dispatch( { type: "auth.update", key: "role", value: "visitor" } );
+    }
 
     return (
         <>
@@ -12,6 +21,9 @@ export default function MenuUser() {
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <div className="navbar-nav">
                         <NavLink className="nav-item nav-link" to='/app'>Brzo Kucanje!</NavLink>
+                    </div>
+                    <div className="navbar-nav">
+                        <button className="btn" onClick={logout}>Logout!</button>
                     </div>
                 </div>
             </nav>

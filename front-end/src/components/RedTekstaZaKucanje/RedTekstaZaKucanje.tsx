@@ -2,7 +2,6 @@ import {useState, useEffect} from 'react';
 
 type Props = {
     redZaPrikaz: string,
-    aktivniKaratkerIndex: number
     unosKorisnika: string,
     brojSekundiRefresh: number,
     vremeIsteklo:() => void
@@ -32,7 +31,7 @@ export default function RedTekstaZaKucanje(props: Props) {
         <div className="w-75 border border-dark p-3 m-auto display-4 text-start" style={{borderWidth: "2px", borderStyle: "solid", background: "#6495ED"}}>
             {props.redZaPrikaz.split("").map((character, index) => {
                 return (
-                    <span className={index <= props.aktivniKaratkerIndex && props.redZaPrikaz[index] !== props.unosKorisnika[index]? 'text-danger': ''} key={index}>{character}</span>
+                    <span className={index <= props.unosKorisnika.length - 1 && props.redZaPrikaz[index] !== props.unosKorisnika[index]? 'text-danger': ''} key={index}>{character}</span>
                 )
             })}
         </div>

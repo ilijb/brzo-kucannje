@@ -56,6 +56,17 @@ class korisnikService extends BaseService<korisniciModel, IAdapterOptions> {
             });
         });
     }
+
+    public async setNewRank(korisnik_id: number, rank_id: number) {
+        return new Promise<korisniciModel>((resolve, reject) => {
+            this.db.execute('UPDATE korisnik set rank_id = ? WHERE korisnik_id = ?', [rank_id, korisnik_id])
+            .then(async result => {
+                resolve(null);
+            }).catch(err => {
+                reject(err);
+            });
+        });
+    }
 }
 
 export default korisnikService;

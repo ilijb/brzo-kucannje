@@ -1,7 +1,7 @@
 import BaseService from "../../common/BaseService";
 import IAdapterOptions from "../../common/IAdapterOptions.interface";
 import sesijaModel from "./sesijaModel.model";
-
+import * as mysql2 from "mysql2/promise";
 
 
 interface IsesijaAdapterOptions extends IAdapterOptions {
@@ -39,6 +39,36 @@ class sesijaService extends BaseService<sesijaModel, IsesijaAdapterOptions> {
                 reject(err);
             });
         });
+    }
+
+    public getAllByUser(korisnik_id: number, options: IsesijaAdapterOptions): Promise<sesijaModel[]> {
+        const tableName = this.tableName();
+
+        return new Promise<sesijaModel[]>(
+            (resolve, reject) => {
+                const sql: string = `SELECT * FROM \`${ tableName }\` WHERE korisnik_id=${korisnik_id} ORDER BY sesija_id DESC LIMIT 0, 10;`;
+
+                this.db.execute(sql)
+                    .then( async ( [ rows ] ) => {
+                        if (rows === undefined) {
+                            return resolve([]);
+                        }
+
+                        const items: sesijaModel[] = [];
+
+                        for (const row of rows as mysql2.RowDataPacket[]) {
+                            items.push(
+                                await this.adaptToModel(row, options)
+                            );
+                        }
+
+                        resolve(items);
+                    })
+                    .catch(error => {
+                        reject(error);
+                    });
+            }
+        );
     }
 }
 
