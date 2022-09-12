@@ -110,6 +110,55 @@ class sesijaController {
             res.send(err);
         }); 
     }
+    
+    async getStatistics(req: Request, res: Response) {
+        const korisnik_id = +req.params.id;
+        this.sesijaServiceInstance.getStatisticsByUser(korisnik_id, null)
+            .then(sesije => {
+                let kategorije = {};
+                sesije.forEach(sesija =>{
+                    if (sesija.kategorija_id in kategorije) {
+                        kategorije[sesija.kategorija_id] = {
+                            ...kategorije[sesija.kategorija_id],
+                            broj_sesija: kategorije[sesija.kategorija_id].broj_sesija + 1,
+                            suma_brzina: kategorije[sesija.kategorija_id].suma_brzina  + sesija.brzina
+                        }
+                    } else {
+                        kategorije[sesija.kategorija_id] = {
+                            kategorija_naziv: sesija.kategorija,
+                            broj_sesija: 1,
+                            suma_brzina: sesija.brzina
+                        }
+                    }
+                })
+                
+                this.rankServiceInstance.getAll(null).then(ranks => {
+                    const response = Object.keys(kategorije).map(kategorijaKey => {
+                        const prosek = +Math.round((kategorije[kategorijaKey].suma_brzina / kategorije[kategorijaKey].broj_sesija * 100)) / 100;
+                        let rankKomPripada = null;
+                        ranks.forEach(rank => {
+                            if (prosek >= rank.opseg_pocetak && prosek <= rank.opseg_kraj) {
+                                rankKomPripada = rank;
+                            }
+                        });
+
+                        return({
+                            ...kategorije[kategorijaKey],
+                            prosek,
+                            rank_ime: rankKomPripada.rank
+                        })
+                    })
+
+                    res.send(response);
+                })
+                .catch(err => {
+                    res.send(err);
+                })
+            })
+            .catch(err => {
+                res.status(500).send(err);
+            });
+    }
 }
 
 export default sesijaController;

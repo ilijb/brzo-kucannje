@@ -23,6 +23,9 @@ export default function MenuUser() {
                         <NavLink className="nav-item nav-link" to='/app'>Brzo Kucanje!</NavLink>
                     </div>
                     <div className="navbar-nav">
+                        <NavLink className="nav-item nav-link" to='/stats'>Statistika po kategoriji</NavLink>
+                    </div>
+                    <div className="navbar-nav">
                         <button className="btn" onClick={logout}>Logout!</button>
                     </div>
                 </div>

@@ -17,8 +17,10 @@ class sesijaRouter implements IRouter {
         const sesijaControllerInstance = new sesijaController(sesijaServiceInstance, tekstServiceInstance, rankServiceInstance, korisnikServiceInstance);
         
         application.get("/api/sesija", sesijaControllerInstance.getAll.bind(sesijaControllerInstance));
+        application.get("/api/sesija/statistika/:id", sesijaControllerInstance.getStatistics.bind(sesijaControllerInstance));
         application.get("/api/sesija/:id", sesijaControllerInstance.getById.bind(sesijaControllerInstance));
         application.post("/api/sesija", sesijaControllerInstance.add.bind(sesijaControllerInstance));
+
     }
 }
 export default sesijaRouter;

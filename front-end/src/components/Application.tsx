@@ -7,12 +7,14 @@ import UserRegisterPage from './User/Registration/UserRegisterPage';
 import Kategorija from './Kategorija/Kategorija';
 import Tekstovi from './Tekstovi/Tekstovi';
 import KucanjeApp from './KucanjeApp/KucanjeApp';
+import StatistikapoKategoriji from './StatistikaPoKategoriji/StatistikaPoKategoriji';
 
 function Application() {
   return (
     <>
       <Menu/>
       <Routes>
+        <Route path='/stats' element={<StatistikapoKategoriji />} />
         <Route path='/register' element={<UserRegisterPage />} />
         <Route path='/login' element={<Login />} />
         <Route path='/tekst/:id'  element={<KucanjeApp />} />

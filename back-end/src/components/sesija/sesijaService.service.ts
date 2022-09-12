@@ -70,6 +70,37 @@ class sesijaService extends BaseService<sesijaModel, IsesijaAdapterOptions> {
             }
         );
     }
+
+    public getStatisticsByUser(korisnik_id: number, options: IsesijaAdapterOptions): Promise<any[]> {
+        const tableName = this.tableName();
+
+        return new Promise<any[]>(
+            (resolve, reject) => {
+                const sql: string = `SELECT s.brzina, t.naslov, k.kategorija_id, k.kategorija
+                 FROM sesija s INNER JOIN tekst t on t.tekst_id = s.tekst_id 
+                               INNER JOIN kategorija k on t.kategorija_id = k.kategorija_id
+                 WHERE korisnik_id=${korisnik_id} `;
+
+                this.db.execute(sql)
+                    .then( async ( [ rows ] ) => {
+                        if (rows === undefined) {
+                            return resolve([]);
+                        }
+
+                        const items: any[] = [];
+
+                        for (const row of rows as mysql2.RowDataPacket[]) {
+                            items.push(row);
+                        }
+
+                        resolve(items);
+                    })
+                    .catch(error => {
+                        reject(error);
+                    });
+            }
+        );
+    }
 }
 
 export default sesijaService;
