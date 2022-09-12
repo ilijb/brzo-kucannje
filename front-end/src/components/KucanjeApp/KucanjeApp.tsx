@@ -132,7 +132,17 @@ export default function KucanjeApp() {
 
     const vremeZaKucanjeIsteklo = () => {
         if (aktivniRedIndex < ucitaniRedovi.length) {
-            zavrsiSesiju();
+            let brojUsp = 0;
+            let tempUserString = userInput.substring(0, ucitaniRedovi[aktivniRedIndex].length);
+            tempUserString.split("").forEach((karakter, index) => {
+                if (ucitaniRedovi[aktivniRedIndex][index] === karakter) {
+                    brojUsp++;
+                }
+            })
+
+            setBrojUspesnihKaraktera(prev => prev + brojUsp);
+
+            setSesijaZavrsena(true);
         }
     }
 
@@ -175,7 +185,7 @@ export default function KucanjeApp() {
 
           <input type="text" id="userInput" name="userInput" className="form-control" style={{fontSize: 25}} value={userInput} 
                     onChange={(e) => setUserInput(e.target.value)} disabled={!pocetakOdobren || ucitaniRedovi.length === 0 || aktivniRedIndex === ucitaniRedovi.length}
-                    // onPaste={(e) =>{ e.preventDefault()}} 
+                    onPaste={(e) =>{ e.preventDefault()}} 
                     />
         
         </div>
@@ -183,7 +193,7 @@ export default function KucanjeApp() {
         <div className="m-5"></div>
 
         <div className="w-50 m-auto">
-            <button id="zapocni" className="btn btn-success w-100 p-4" style={{fontSize: 25}} onClick={zapocni}>Zapocni</button>
+            <button id="zapocni" className="btn btn-success w-100 p-4" style={{fontSize: 25}} disabled={pocetakOdobren} onClick={zapocni}>Zapocni</button>
         </div>
 
         <div className="m-5"></div>
