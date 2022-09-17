@@ -9,13 +9,13 @@ git clone https://github.com/ilijb/brzo-kucannje.git
 cd brzo-kucanje
 
 - Baza
-  mysql -u user -p 
-  (Unutar mysql konzole)
-  create database brzo_kucanje;
-  grant all on brzo_kucanje.* to 'user'@'localhost';
-  exit;
-  (Import)
-  mysql -u user -p brzo_kucanje < baza_dump.sql
+  mysql -u user -p <br/>
+  (Unutar mysql konzole) <br/>
+  create database brzo_kucanje; <br/>
+  grant all on brzo_kucanje.* to 'user'@'localhost'; <br/>
+  exit; <br/>
+  (Import) <br/>
+  mysql -u user -p brzo_kucanje < baza_dump.sql <br/>
 
 
 cd back-end 
