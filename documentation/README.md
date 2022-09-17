@@ -26,4 +26,6 @@ Aplikacija treba da omogući korisnicu da se registruje, potom da se prijavi na 
 
 ## Use-Case dijagrami
 
+
+
 ## 
