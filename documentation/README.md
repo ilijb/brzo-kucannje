@@ -1,6 +1,6 @@
 # Aplikacija za ucenje brzog kucanja
 
-Projekat za predmet 'Praktikum - INternet i web tehnologije' <br/>
+Projekat za predmet Praktikum - Internet i web tehnologije <br/>
 
 Broj Indeksa: 2021202576 <br/> 
 Ime i prezime: Ilija Bjelic <br/>
