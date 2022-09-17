@@ -8,7 +8,7 @@ git clone https://github.com/ilijb/brzo-kucannje.git
 
 cd brzo-kucanje<br/>
 <br/>
-- Baza
+- Baza <br/> 
   mysql -u user -p <br/>
   (Unutar mysql konzole) <br/>
   create database brzo_kucanje; <br/>
