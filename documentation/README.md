@@ -27,6 +27,7 @@ Aplikacija treba da omogući korisnicu da se registruje, potom da se prijavi na 
 
 ## Use-Case dijagrami
 
+![image](https://user-images.githubusercontent.com/112157001/190865566-bb8e30d1-5118-44c7-a66d-c3a0275ec683.png)
 
 
 ## 
