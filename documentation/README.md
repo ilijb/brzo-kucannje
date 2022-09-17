@@ -23,6 +23,7 @@ Aplikacija treba da omogući korisnicu da se registruje, potom da se prijavi na 
 
 
 ## Baza podataka
+![image](https://user-images.githubusercontent.com/112157001/190861832-05fc514b-04d5-41fc-9a4f-ca60a6300101.png)
 
 ## Use-Case dijagrami
 
