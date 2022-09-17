@@ -6,8 +6,8 @@ Uputstvo:
 
 git clone https://github.com/ilijb/brzo-kucannje.git
 
-cd brzo-kucanje
-
+cd brzo-kucanje<br/>
+<br/>
 - Baza
   mysql -u user -p <br/>
   (Unutar mysql konzole) <br/>
@@ -16,17 +16,17 @@ cd brzo-kucanje
   exit; <br/>
   (Import) <br/>
   mysql -u user -p brzo_kucanje < baza_dump.sql <br/>
-
-
-cd back-end 
-(back-end\src\config.ts editovati database deo za informacije o bazi)
-npm install
-npm start
-cd ..
-
-cd front-end
-npm install
-npm start
+<br/>
+<br/>
+cd back-end  <br/>
+(back-end\src\config.ts editovati database deo za informacije o bazi) <br/>
+npm install <br/>
+npm start <br/>
+cd .. <br/>
+<br/>
+cd front-end <br/>
+npm install  <br/>
+npm start <br/>
 
 
 
